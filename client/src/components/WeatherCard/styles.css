@@ -1,0 +1,20 @@
+.card {
+  margin-top: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.minTemperature {
+  display: inline;
+  margin-left: 40px;
+}
+
+.maxTemperature {
+  display: inline;
+  margin-left: 25px;
+}

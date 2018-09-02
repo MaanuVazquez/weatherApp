@@ -12,8 +12,8 @@ console.info(__dirname)
 
 const server = polka()
   .use(morgan('tiny'))
+  .use(serve(path.join(__dirname, '../public')))
   .use('/v1', api)
-  // .use(serve(path.join(__dirname, '../public')))
   .listen(PORT)
   .then(() => {
     console.info(`> Running on localhost:${PORT}`)
