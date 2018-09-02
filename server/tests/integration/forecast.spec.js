@@ -12,7 +12,7 @@ describe('Integration test', () => {
   })
 
   describe('Forecast endpoint', () => {
-    it("should return 'user ip' locations current weather", async () => {
+    it("should return 'user ip' locations forecast", async () => {
       const TESTED_IP = '208.80.152.201'
       const TESTED_CITY = 'San Francisco'
       const { OPEN_WEATHER_API_KEY } = process.env
@@ -29,14 +29,15 @@ describe('Integration test', () => {
           const expectedJSON = {
             weather: (await response.json()).list,
           }
-          expect(res.body).to.be.instanceof(Array)
-          expect(res.body.length).to.be.above(0)
+          expect(res.body).to.be.instanceof(Object)
+          expect(res.body).to.have.property('weather')
+          expect(res.body.weather.length).to.be.above(0)
           expect(res.body).to.be.deep.equal(expectedJSON)
         })
     })
 
-    it('should return brujas current weather', async () => {
-      const TESTED_CITY = 'Brujas'
+    it('should return moscow 5 day forecast weather', async () => {
+      const TESTED_CITY = 'Moscow'
       const { OPEN_WEATHER_API_KEY } = process.env
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${TESTED_CITY}&type=like&units=metric&appid=${OPEN_WEATHER_API_KEY}`,
@@ -50,8 +51,9 @@ describe('Integration test', () => {
           const expectedJSON = {
             weather: (await response.json()).list,
           }
-          expect(res.body).to.be.instanceof(Array)
-          expect(res.body.length).to.be.above(0)
+          expect(res.body).to.be.instanceof(Object)
+          expect(res.body).to.have.property('weather')
+          expect(res.body.weather.length).to.be.above(0)
           expect(res.body).to.be.deep.equal(expectedJSON)
         })
     })

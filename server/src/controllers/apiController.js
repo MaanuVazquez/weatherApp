@@ -15,12 +15,12 @@ const controller = {
   async getCurrentWeather(city) {
     const { OPEN_WEATHER_API_KEY } = process.env
     const response = await fetch(
-      `${API.openWeather}/find?q=${normalizeCityName(
+      `${API.openWeather}/weather?q=${normalizeCityName(
         city,
-      )}&type=like&units=metric&appid=${OPEN_WEATHER_API_KEY}`,
+      )}&units=metric&appid=${OPEN_WEATHER_API_KEY}`,
     )
     return {
-      weather: (await response.json()).list,
+      weather: [await response.json()],
     }
   },
 
@@ -29,7 +29,7 @@ const controller = {
     const response = await fetch(
       `${API.openWeather}/forecast?q=${normalizeCityName(
         city,
-      )}&cnt=5&type=like&units=metric&appid=${OPEN_WEATHER_API_KEY}`,
+      )}&type=like&units=metric&appid=${OPEN_WEATHER_API_KEY}`,
     )
     return {
       weather: (await response.json()).list,

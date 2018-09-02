@@ -17,20 +17,22 @@ describe('Integration test', () => {
       const TESTED_CITY = 'San Francisco'
       const { OPEN_WEATHER_API_KEY } = process.env
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/find?q=${TESTED_CITY}&type=like&units=metric&appid=${OPEN_WEATHER_API_KEY}`,
+        `https://api.openweathermap.org/data/2.5/weather?q=${TESTED_CITY}&units=metric&appid=${OPEN_WEATHER_API_KEY}`,
       )
       chai
         .request('http://localhost:3000/')
         .get('v1/current')
         .set('x-forwarded-for', TESTED_IP)
+
         .end(async (error, res) => {
           expect(error).to.be.null
           expect(res).to.be.json
           const expectedJSON = {
-            weather: (await response.json()).list,
+            weather: [await response.json()],
           }
-          expect(res.body).to.be.instanceof(Array)
-          expect(res.body.length).to.be.above(0)
+          expect(res.body).to.be.instanceof(Object)
+          expect(res.body).to.have.property('weather')
+          expect(res.body.weather.length).to.be.above(0)
           expect(res.body).to.be.deep.equal(expectedJSON)
         })
     })
@@ -39,7 +41,7 @@ describe('Integration test', () => {
       const TESTED_CITY = 'Moscow'
       const { OPEN_WEATHER_API_KEY } = process.env
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/find?q=${TESTED_CITY}&type=like&units=metric&appid=${OPEN_WEATHER_API_KEY}`,
+        `https://api.openweathermap.org/data/2.5/weather?q=${TESTED_CITY}&units=metric&appid=${OPEN_WEATHER_API_KEY}`,
       )
       chai
         .request('http://localhost:3000/')
@@ -48,10 +50,11 @@ describe('Integration test', () => {
           expect(error).to.be.null
           expect(res).to.be.json
           const expectedJSON = {
-            weather: (await response.json()).list,
+            weather: [await response.json()],
           }
-          expect(res.body).to.be.instanceof(Array)
-          expect(res.body.length).to.be.above(0)
+          expect(res.body).to.be.instanceof(Object)
+          expect(res.body).to.have.property('weather')
+          expect(res.body.weather.length).to.be.above(0)
           expect(res.body).to.be.deep.equal(expectedJSON)
         })
     })
