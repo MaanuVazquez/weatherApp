@@ -25,7 +25,7 @@
     "nyc": "^12.0.2"
   },
   "scripts": {
-    "build": "npx babel-cli src --out-dir dist",
+    "build": "babel src --out-dir dist && npm prune",
     "start": "node dist/index.js",
     "dev": "babel-node src/index.js",
     "dev:watch": "nodemon",
