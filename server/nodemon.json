@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "execMap": {
+    "js": "npm run dev"
+  },
+  "watch": ["src/"],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js,json"
+}

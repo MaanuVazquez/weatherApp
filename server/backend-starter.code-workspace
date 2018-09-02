@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+            "name": "BACKEND STARTER",
+			"path": "."
+		}
+	],
+	"settings": {
+        "javascript.format.enable": false,
+        "files.associations": {
+            "*.js": "javascript"
+        },
+        "javascript.validate.enable": true,
+        "editor.formatOnPaste": true,
+        "prettier.stylelintIntegration": false,
+        "prettier.jsxBracketSameLine": false,
+        "prettier.bracketSpacing": false,
+        "prettier.arrowParens": "avoid",
+        "prettier.eslintIntegration": true,
+        "prettier.parser": "flow",
+        "prettier.printWidth": 120,
+        "prettier.semi": false,
+        "prettier.singleQuote": true,
+        "prettier.useTabs": false
+    }
+}

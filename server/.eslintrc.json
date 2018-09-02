@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "strict": [2, "never"],
+    "no-var": 2,
+    "no-extra-semi": 0,
+    "semi": ["error", "never"],
+    "no-console": ["error", {"allow": ["warn", "error", "info"]}],
+    "import/prefer-default-export": 0
+  }
+}

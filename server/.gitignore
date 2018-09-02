@@ -1,0 +1,27 @@
+# Dist
+dist/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# VSCode
+.vs/
+.vscode/
+
+*.swp
+*.log
+*.env
+node_modules
+build
+.DS_Store
+
+.npmrc
+
+tests/shared-test
+shared/
+
+src/config
+
+tmp
+public/

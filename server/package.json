@@ -1,0 +1,52 @@
+{
+  "name": "backend-starter",
+  "version": "0.0.1",
+  "description": "backend starter with polka",
+  "main": "src/index.js",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "morgan": "^1.9.0",
+    "node-fetch": "^2.2.0",
+    "polka": "^0.4.0",
+    "serve-static": "^1.13.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "chai-http": "^4.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.3",
+    "nyc": "^12.0.2"
+  },
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "start": "node dist/index.js",
+    "dev": "babel-node src/index.js",
+    "dev:watch": "nodemon",
+    "test": "NODE_ENV=test mocha --require babel-register --recursive './tests/**/*.js' --timeout 10000 --exit",
+    "test:watch": "NODE_ENV=test mocha --require babel-register --recursive './tests/**/*.js' --timeout 10000 -watch",
+    "test:coverage": "NODE_ENV=test nyc mocha --require babel-register --recursive './tests/**/*.js' --timeout 10000 --exit"
+  },
+  "author": "Maanu",
+  "license": "MIT",
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "tests/**/*.spec.js"
+    ],
+    "reporter": [
+      "json",
+      "json-summary",
+      "text",
+      "text-summary"
+    ]
+  }
+}

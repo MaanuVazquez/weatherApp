@@ -1,0 +1,25 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "weather web app",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npm run install:client && npm run build:client && npm run copy:clientbuild && npm run install:server && npm run build:server",
+    "start": "cd server && npm run start",
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "copy:clientbuild": "cpx \"./client/build/**/*\" \"server/public\""
+  },
+  "keywords": [
+    "weather",
+    "react",
+    "app"
+  ],
+  "author": "Maanu",
+  "license": "MIT",
+  "dependencies": {
+    "cpx": "^1.5.0"
+  }
+}
